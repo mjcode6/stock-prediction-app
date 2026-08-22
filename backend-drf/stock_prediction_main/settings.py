@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "accounts",
     "api",
     "corsheaders",
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,12 @@ MAILERS = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",    
 ]
+
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
