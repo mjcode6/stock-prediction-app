@@ -31,6 +31,7 @@ class StockPredictionAPIView(APIView):
             if df.empty:
                 return Response({"error": "No data found for the given ticker.", 'status': 'status.HTTP_404_not_found'})
             df = df.reset_index()
+            df = df[['Date', 'Close']].dropna()
             # Generate basic plot
             plt.switch_backend('AGG')
             plt.figure(figsize =(12,5))
