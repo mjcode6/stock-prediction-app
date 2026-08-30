@@ -54,13 +54,13 @@ const Dashboard = () => {
 
 } catch (error) {
     console.error(
-        'There was an error making the API request:',
+        "Une erreur s'est produite lors de la communication avec l'API.",
         error.response?.data || error.message
     );
 
     setError(
         error.response?.data?.error ||
-        'Unable to get prediction. Please try again.'
+        "Impossible d'obtenir la prédiction. Veuillez réessayer."
     );
 } finally {
     setLoading(false);
@@ -72,12 +72,12 @@ const Dashboard = () => {
         <div className="row">
             <div className="col-md-6 mx-auto">
                 <form onSubmit={handleSubmit}>
-                    <input type="text" className='form-control' placeholder='Enter Stock Ticker' 
+                    <input type="text" className='form-control' placeholder='Saisir un ticker boursier' 
                     onChange={(e) => setTicker(e.target.value)} required
                     />
                     <small>{error && <div className='text-danger'>{error}</div>}</small>
                     <button type='submit' className='btn btn-info mt-3'>
-                        {loading ? <span><FontAwesomeIcon icon={faSpinner} spin /> Please wait...</span>: 'See Prediction'}
+                        {loading ? <span><FontAwesomeIcon icon={faSpinner} spin />Veuillez patienter...</span>: 'Lancer la prédiction'}
                     </button>
                 </form>
             </div>
@@ -110,10 +110,10 @@ const Dashboard = () => {
                 </div>
 
                 <div className="text-light p-3">
-                    <h4>Model Evalulation</h4>
-                    <p>Mean Squared Error (MSE): {mse}</p>
-                    <p>Root Mean Squared Error (RMSE): {rmse}</p>
-                    <p>R-Squared: {r2}</p>
+                    <h4>Évaluation du modèle</h4>
+                    <p>Erreur quadratique moyenne (MSE): {mse}</p>
+                    <p>Racine de l'erreur quadratique moyenne (RMSE): {rmse}</p>
+                    <p>Coefficient de détermination (R²): {r2}</p>
                 </div>
 
             </div>

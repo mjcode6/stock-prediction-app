@@ -28,8 +28,8 @@ const Login = () => {
             navigate('/');
 
         }catch(error){  
-            console.error('invalid credintail');
-            setError('Invalid username or password. Please try again.');
+            console.error('Identifiants invalides');
+            setError("Nom d'utilisateur ou mot de passe incorrect. Veuillez réessayer.");
         }finally{
             setLoading(false);
         }
@@ -38,19 +38,19 @@ const Login = () => {
         <div className="container">
         <div className="row justify-content-center">
             <div className="col-md-6 bg-light-dark p-5 rounded">
-            <h3 className="text-light text-center">Log in to our Portal</h3>
+            <h3 className="text-light text-center">Connectez-vous à notre portail</h3>
         <form onSubmit={handleLogin}>
         
             <div className="mb-3">
-                <input type="text" className="form-control mb-3" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <input type="text" className="form-control mb-3" placeholder="Nom d'utilisateur" value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="mb-3">
-                <input type="password" className="form-control mb-3" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" className="form-control mb-3" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             {error && <div className="text-danger mb-3">{error}</div>}
 
-            {loading ? (<button type="submit" className="btn btn-info d-block mx-auto" disabled><FontAwesomeIcon icon={faSpinner} spin /> Logging in...</button>): (
-            <button type="submit" className="btn btn-info d-block mx-auto">Login</button>
+            {loading ? (<button type="submit" className="btn btn-info d-block mx-auto" disabled><FontAwesomeIcon icon={faSpinner} spin /> Connexion en cours...</button>): (
+            <button type="submit" className="btn btn-info d-block mx-auto">Se connecter</button>
             )}
 
             

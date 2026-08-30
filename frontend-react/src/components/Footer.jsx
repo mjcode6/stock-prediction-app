@@ -5,7 +5,7 @@ const Footer = () => {
         <>
         <footer className="py-3 my-3 footer"> </footer>
         <hr className="border-bottom" />
-        <p className="text-center text-light">© Build by human for human.</p>
+        <p className="text-center text-light">© Application développée dans le cadre du Titre Professionnel CDA.</p>
         </>
     )
 }
