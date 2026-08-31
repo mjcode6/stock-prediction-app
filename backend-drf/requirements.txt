@@ -1,0 +1,13 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+python-decouple
+psycopg2-binary
+pandas
+numpy
+yfinance
+tensorflow
+matplotlib
+scikit-learn
+gunicorn
