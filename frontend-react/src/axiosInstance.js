@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 // Request Interceptor
 axiosInstance.interceptors.request.use(
     function(config){
-        const accessToken = localStorage.getItem('accessToken')
+        const accessToken = localStorage.getItem('access_token')
         if(accessToken){
             config.headers['Authorization'] = `Bearer ${accessToken}`
         }
@@ -34,15 +34,15 @@ axiosInstance.interceptors.response.use(
         const originalRequest = error.config;
         if(error.response.status === 401 && !originalRequest.retry){
             originalRequest.retry = true;
-            const refreshToken = localStorage.getItem('refreshToken')
+            const refreshToken = localStorage.getItem('refresh_token')
             try{
                 const response = await axiosInstance.post('/token/refresh/', {refresh: refreshToken})
-                localStorage.setItem('accessToken', response.data.access)
+                localStorage.setItem('access_token', response.data.access)
                 originalRequest.headers['Authorization'] = `Bearer ${response.data.access}`
                 return axiosInstance(originalRequest)
             }catch(error){
-                localStorage.removeItem('accessToken')
-                localStorage.removeItem('refreshToken')
+                localStorage.removeItem('access_token')
+                localStorage.removeItem('refresh_token')
             }
         }
         return Promise.reject(error);

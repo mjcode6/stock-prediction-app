@@ -20,7 +20,8 @@ const Login = () => {
         console.log('Login data:', userData);
 
         try{      
-            const response = await axios.post('http://127.0.0.1:8000/api/v1/token/', userData);
+            const response = await axios.post( `${import.meta.env.VITE_BACKEND_BASE_API}/token/`,
+    userData);
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
             console.log('Login successful:', response.data);
