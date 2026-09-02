@@ -11,13 +11,16 @@ from datetime import datetime
 import os
 from django.conf import settings
 from .utils import save_plot
-from sklearn.preprocessing import MinMaxScaler
-from keras.models import load_model
-from sklearn.metrics import mean_squared_error, r2_score
+
+
+
 
 # Create your views here.
 class StockPredictionAPIView(APIView):
     def post(self,request):
+        from sklearn.preprocessing import MinMaxScaler
+        from keras.models import load_model
+        from sklearn.metrics import mean_squared_error, r2_score
         serializer = StockPredictionSerializers(data=request.data)
         if serializer.is_valid():
             ticker = serializer.validated_data['ticker']
@@ -83,7 +86,7 @@ class StockPredictionAPIView(APIView):
             scaler = MinMaxScaler(feature_range=(0,1))
             
             # load ml model
-            model = load_model('stock_prediction_model.keras')
+            model = load_model( os.path.join(settings.BASE_DIR, 'stock_prediction_model.keras'))
             
             # preparing the test data
             past_100_days = data_training.tail(100)
